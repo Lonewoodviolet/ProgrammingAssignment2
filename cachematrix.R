@@ -3,7 +3,7 @@
 ## R programming Assignment 2 -- Create a function for calculating a square matrix
 ## and return its invert value 
 
-## This function creates a special "matrix" object that can cache its inverse
+## This function below creates a special "matrix" object that can cache its inverse
 ## Warning: To run this function without error, matrix input should be invertible
 
 makeCacheMatrix <- function(x = matrix()) {
@@ -13,7 +13,7 @@ makeCacheMatrix <- function(x = matrix()) {
                 m <<- NULL
         }
         get <- function() x
-        setinverse <- function(solve) x <<- solve
+        setinverse <- function(solve) x <<- solve #cache the inversed matrix
         getinverse <- function() m
         list(set = set, get = get,
              setinverse = setinverse,
@@ -26,9 +26,9 @@ makeCacheMatrix <- function(x = matrix()) {
 ## If the inverse has already been calculated (and the matrix has not changed), 
 ## then the cachesolve should retrieve the inverse from the cache.
 
-cacheSolve <- function(x, ...) {
+CacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-        mt <- x$getinverse()
+        mt <- x$getinverse() #check if the previous function already got inversed matrix
         if(!is.null(mt)) {
                 message("getting inversed matrix")
                 return(mt)
